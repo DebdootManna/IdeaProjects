@@ -24,10 +24,11 @@ This repository contains Java practical files and Data Structures & Algorithms (
 
 ## 🚀 Getting Started
 
-1. Clone the repository:
-2. Navigate to the desired directory:
-   or
-3. Compile and run Java files as needed:
+1. Clone the repository: git clone https://github.com/DebdootManna/IdeaProjects.git
+2. Navigate to the desired directory: cd IdeaProjects/Java Practicals
+   or cd IdeaProjects/DSA
+3. Compile and run Java files as needed: javac FileName.java
+   java FileName
 
 ## 🧠 Topics Covered
 
