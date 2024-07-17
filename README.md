@@ -10,14 +10,15 @@ This repository contains Java practical files and Data Structures & Algorithms (
 
 ## 📂 Repository Structure
 
-├── Java Practicals/
-│   ├── Practical01/
-│   ├── Practical02/
+.
+├── Java Practicals
+│   ├── Practical01
+│   ├── Practical02
 │   └── ...
-├── DSA/
-│   ├── DSA1/
-│   ├── DSA2/
-│   ├── DSA3/
+├── DSA
+│   ├── Arrays
+│   ├── Linked Lists
+│   ├── Trees
 │   └── ...
 └── README.md
 
