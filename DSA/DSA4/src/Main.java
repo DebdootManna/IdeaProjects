@@ -1,49 +1,96 @@
-class Solution {
-    public boolean canArrange(int[] arr, int k) {
-        if (arr.length % 2 != 0) {
-            return false;
+class DoublyLinkedList {
+
+    // Node class representing each element of the doubly linked list
+    static class Node {
+        int data;
+        Node prev;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    private Node head;
+    private Node tail;
+
+    // Method to insert a node at the front of the doubly linked list
+    public void insertAtFront(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
         }
 
-        int[] remainderCount = new int[k];
+        System.out.println("Inserted " + data + " at the front.");
+        displayList();
+    }
 
-        for (int num : arr) {
-            int remainder = ((num % k) + k) % k;
-            remainderCount[remainder]++;
+    // Method to delete a node from the last of the doubly linked list
+    public void deleteAtLast() {
+        if (tail == null) {
+            System.out.println("The list is empty. Cannot delete from last.");
+            return;
         }
 
-        if (remainderCount[0] % 2 != 0) {
-            return false;
-        }
+        System.out.println("Deleting node " + tail.data + " from the last.");
 
-        for (int i = 1; i <= k / 2; i++) {
-            if (i == k - i) {
-                if (remainderCount[i] % 2 != 0) {
-                    return false;
-                }
-            } else if (remainderCount[i] != remainderCount[k - i]) {
-                return false;
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            tail = tail.prev;
+            if (tail != null) {
+                tail.next = null;
             }
         }
 
-        return true;
+        displayList();
     }
-}
 
-public class Main {
+    // Method to delete all nodes from the doubly linked list
+    public void deleteAllNodes() {
+        head = null;
+        tail = null;
+        System.out.println("All nodes have been deleted.");
+        displayList();
+    }
+
+    // Method to display the content of the doubly linked list
+    public void displayList() {
+        if (head == null) {
+            System.out.println("The list is empty.");
+            return;
+        }
+
+        Node current = head;
+        System.out.print("List: ");
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    // Main method to test the functionality
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        DoublyLinkedList list = new DoublyLinkedList();
 
-        // Test cases
-        int[] arr1 = {1,2,3,4,5,10,6,7,8,9};
-        int k1 = 5;
-        System.out.println("Example 1: " + solution.canArrange(arr1, k1));  // Should print true
+        // Test operations
+        list.insertAtFront(10);
+        list.insertAtFront(20);
+        list.insertAtFront(30);
 
-        int[] arr2 = {1,2,3,4,5,6};
-        int k2 = 7;
-        System.out.println("Example 2: " + solution.canArrange(arr2, k2));  // Should print true
+        list.deleteAtLast();
+        list.deleteAtLast();
+        list.deleteAtLast();
 
-        int[] arr3 = {1,2,3,4,5,6};
-        int k3 = 10;
-        System.out.println("Example 3: " + solution.canArrange(arr3, k3));  // Should print false
+        list.insertAtFront(40);
+        list.insertAtFront(50);
+
+        list.deleteAllNodes();
     }
 }
